@@ -1,25 +1,33 @@
-const Tag = require("../models/tag");
+const { User, Answer, Question, Quiz, Tag, Level } = require("../models");
 
 const appController = {
   async index(req, res) {
     try {
       await Tag.sync({ force: true });
 
-      let tag = {
-        name: "one more new tag",
-      };
+      let tags = [
+        { name: "tag1" },
+        { name: "tag2" },
+        { name: "tag3" },
+        // Add more tag objects as needed
+      ];
 
       // * On créé un tag
-      await Tag.create(tag);
+      await Tag.bulkCreate(tags);
 
       // *  On sélectionne le tag avec un where sql
-      tag = await Tag.findOne({
-        where: { name: "one more new tag" },
-      });
+      // tag = await Tag.findOne({
+      //   where: { name: "one more new tag" },
+      // });
 
-      console.log(tag.dataValues);
+      // On sélectionne tous les tags
+      const createdTags = await Tag.findAll();
 
-      return res.render("index");
+      const allQuestions = await Question.findAll();
+
+      const oneQuestionWithId3 = await Question.findByPk(3);
+
+      return res.render("index", { oneQuestionWithId3 });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);
