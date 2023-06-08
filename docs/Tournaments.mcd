@@ -1,0 +1,11 @@
+Tournaments: code_tournament, name, description
+posseder, 11 Games, 11 Tournaments
+Games: code_game, name, description
+
+choisir, NN Tournaments, NN Clubs
+
+Sponsors: code_sponsor, name, slogan
+appartient, 0N Sponsors, 0N Clubs
+Clubs: code_club, name, country, phone
+avoir, 11 Clubs, 0N Levels
+Levels: code_level, name
