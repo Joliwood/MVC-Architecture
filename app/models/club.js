@@ -1,19 +1,19 @@
 const { Model, DataTypes } = require("sequelize");
 const getConnexion = require("../db/sequelizeConnexion");
 
-class Quiz extends Model {}
+class Club extends Model {}
 
-Quiz.init(
+Club.init(
   {
+    name: DataTypes.TEXT,
     description: DataTypes.TEXT,
-    question_id: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER,
   },
+
   {
     sequelize: getConnexion(),
-    tableName: "quiz",
-    modelName: "Quiz",
+    tableName: "club",
+    modelName: "Club",
   }
 );
 
-module.exports = Quiz;
+module.exports = Club;

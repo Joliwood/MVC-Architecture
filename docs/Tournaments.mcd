@@ -1,8 +1,8 @@
 Tournaments: code_tournament, name, description
-posseder, 11 Games, 11 Tournaments
+posseder, 0N Games, 11 Tournaments
 Games: code_game, name, description
 
-choisir, NN Tournaments, NN Clubs
+choisir, NN Tournaments, 0N Clubs
 
 Sponsors: code_sponsor, name, slogan
 appartient, 0N Sponsors, 0N Clubs

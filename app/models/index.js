@@ -1,88 +1,62 @@
-const Answer = require("./answer");
-const Question = require("./question");
-const Quiz = require("./quiz");
-const Tag = require("./tag");
-const User = require("./user");
+const Tournament = require("./tournament");
+const Sponsor = require("./sponsor");
+const Game = require("./game");
+const Club = require("./club");
 const Level = require("./level");
 
-// Ici on va gérer les associations entre les modèles : les cardinalités version JS
-
-// Chez Sequelize:
+// Sequelize:
 // 0,1 = hasOne
 // 1,1 = belongsTo
 // 0,n = hasMany
 // n,n = belongsToMany
 
-// Level et Question :
-Level.hasMany(Question, {
+Level.hasMany(Sponsor, {
   foreignKey: "level_id",
-  // Au pluriel car un niveau peut être DEFINI dans plusieurs questions
-  as: "questions",
+  as: "sponsors",
 });
 
-// Question et Level :
-Question.belongsTo(Level, {
+Sponsor.belongsTo(Level, {
   foreignKey: "level_id",
   as: "level",
 });
 
-// Question et Answer
-Question.hasMany(Answer, {
-  foreignKey: "question_id",
-  // Au pluriel car il y existes plusieurs réponses possible à chaque question
-  as: "answers",
+Sponsor.hasMany(Tournament, {
+  foreignKey: "sponsor_id",
+  as: "tournaments",
 });
 
-// Answer et Question
-Answer.belongsTo(Question, {
-  foreignKey: "question_id",
-  // Au singulier car c'est la réponse à une question
-  as: "question",
+Tournament.belongsTo(Sponsor, {
+  foreignKey: "sponsor_id",
+  as: "sponsor",
 });
 
-// Question et Answer POUR LA BONNE REPONSE
-Question.belongsTo(Answer, {
-  foreignKey: "answer_id",
-  as: "good_answer",
+Sponsor.belongsTo(Tournament, {
+  foreignKey: "tournament_id",
+  as: "good_Tournament",
 });
 
-// Attention erreur dans le svg, dans le code, la logique y est
-// Quiz et Question
-Quiz.hasMany(Question, {
-  foreignKey: "quiz_id",
-  as: "questions",
+Game.hasMany(Sponsor, {
+  foreignKey: "game_id",
+  as: "sponsors",
 });
 
-Question.belongsTo(Quiz, {
-  foreignKey: "quiz_id",
-  as: "quiz",
+Sponsor.belongsTo(Game, {
+  foreignKey: "game_id",
+  as: "game",
 });
 
-// Quiz et User
-User.hasMany(Quiz, {
-  foreignKey: "user_id",
-  as: "quizzes",
+Game.belongsToMany(Club, {
+  as: "Clubs",
+  through: "Game_has_Club",
+  foreignKey: "Game_id",
+  otherKey: "Club_id",
 });
 
-Quiz.belongsTo(User, {
-  foreignKey: "user_id",
-  as: "author",
+Club.belongsToMany(Game, {
+  as: "Gamezes",
+  through: "Game_has_Club",
+  foreignKey: "Club_id",
+  otherKey: "Game_id",
 });
 
-// Quiz et Tag
-Quiz.belongsToMany(Tag, {
-  as: "tags",
-  through: "quiz_has_tag",
-  foreignKey: "quiz_id",
-  otherKey: "tag_id",
-});
-
-// Ici pas logique, mais un parti pris
-Tag.belongsToMany(Quiz, {
-  as: "quizzes",
-  through: "quiz_has_tag",
-  foreignKey: "tag_id",
-  otherKey: "quiz_id",
-});
-
-module.exports = { User, Answer, Question, Quiz, Tag, Level };
+module.exports = { Tournament, Sponsor, Game, Club, Level };

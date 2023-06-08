@@ -5,7 +5,7 @@
 <!-- Association posseder -->
 <g>
 	<line x1="410" y1="51" x2="302" y2="51" stroke="#5aae61" stroke-width="2"/>
-	<text x="344" y="68" fill="#762a83" font-family="Verdana" font-size="12">1,1</text>
+	<text x="343" y="68" fill="#762a83" font-family="Verdana" font-size="12">0,N</text>
 	<line x1="175" y1="51" x2="302" y2="51" stroke="#5aae61" stroke-width="2"/>
 	<text x="239" y="43" fill="#762a83" font-family="Verdana" font-size="12">1,1</text>
 	<g>
@@ -22,7 +22,7 @@
 	<line x1="175" y1="51" x2="302" y2="126" stroke="#5aae61" stroke-width="2"/>
 	<text x="239" y="82.42" fill="#762a83" font-family="Verdana" font-size="12">N,N</text>
 	<line x1="302" y1="227" x2="302" y2="126" stroke="#5aae61" stroke-width="2"/>
-	<text x="307" y="168" fill="#762a83" font-family="Verdana" font-size="12">N,N</text>
+	<text x="307" y="168" fill="#762a83" font-family="Verdana" font-size="12">0,N</text>
 	<g>
 		<path d="M315 101 a14 14 90 0 1 14 14 V126 h-54 V115 a14 14 90 0 1 14 -14" fill="#a6dba0" stroke="#a6dba0" stroke-width="0"/>
 		<path d="M329 126 v11 a14 14 90 0 1 -14 14 H289 a14 14 90 0 1 -14 -14 V126 H54" fill="#d9f0d3" stroke="#d9f0d3" stroke-width="0"/>

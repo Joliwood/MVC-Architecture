@@ -6,22 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheets/style.css"></link>
     <title>Accueil</title>
-    <script>
-      // Function to refresh the page after a delay (in milliseconds)
-      setTimeout(function() {
-        location.reload();
-      }, 1000); // Refresh after 1 second (adjust the delay as needed)
-    </script>
   </head>
   <%- include("partials/header") %>
-  <body class="bg-white min-h-screen	">
-    <h1>It is working</h1>
-    <section class="flex bg-gray-200 justify-center	p-5">
+  <body class="bg-white min-h-screen flex flex-col">
+    <h1 class="prose prose-2xl mx-auto my-10 text-gray-600">Tous les tournois en cours</h1>
+    <section class="flex bg-gray-200 justify-center items-center	p-5 flex-auto">
       <%- include("partials/card") %>
     </section>
-    <%# allQuestions.forEach(element => { %>
-    <h3><%# element.description %> <%- oneQuestionWithId3.description %></h3>
-    <%# }); %>
-    <a href="/signup">S'enregistrer</a>
   </body>
 </html>
