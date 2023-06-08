@@ -10,53 +10,44 @@ const Level = require("./level");
 // 0,n = hasMany
 // n,n = belongsToMany
 
-Level.hasMany(Sponsor, {
-  foreignKey: "level_id",
-  as: "sponsors",
+Level.hasMany(Club, {
+  foreignKey: "club_id",
+  as: "club",
 });
 
-Sponsor.belongsTo(Level, {
+Club.belongsTo(Level, {
   foreignKey: "level_id",
   as: "level",
 });
 
-Sponsor.hasMany(Tournament, {
-  foreignKey: "sponsor_id",
-  as: "tournaments",
+Sponsor.hasMany(Club, {
+  foreignKey: "club_id",
+  as: "club",
 });
 
-Tournament.belongsTo(Sponsor, {
+Club.hasMany(Sponsor, {
   foreignKey: "sponsor_id",
   as: "sponsor",
 });
 
-Sponsor.belongsTo(Tournament, {
+Club.hasMany(Tournament, {
   foreignKey: "tournament_id",
-  as: "good_Tournament",
+  as: "tournament",
 });
 
-Game.hasMany(Sponsor, {
-  foreignKey: "game_id",
-  as: "sponsors",
+Tournament.belongsToMany(Club, {
+  foreignKey: "club_id",
+  as: "club",
 });
 
-Sponsor.belongsTo(Game, {
+Tournament.belongsTo(Game, {
   foreignKey: "game_id",
   as: "game",
 });
 
-Game.belongsToMany(Club, {
-  as: "Clubs",
-  through: "Game_has_Club",
-  foreignKey: "Game_id",
-  otherKey: "Club_id",
-});
-
-Club.belongsToMany(Game, {
-  as: "Gamezes",
-  through: "Game_has_Club",
-  foreignKey: "Club_id",
-  otherKey: "Game_id",
+Game.hasMany(Tournament, {
+  foreignKey: "tournament_id",
+  as: "tournament",
 });
 
 module.exports = { Tournament, Sponsor, Game, Club, Level };
