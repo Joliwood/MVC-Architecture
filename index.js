@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
 const server = express();
+
 const viewsDirectory = path.join(__dirname, "app/views");
 
 dotenv.config();

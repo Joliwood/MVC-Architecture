@@ -6,6 +6,7 @@ function getConnexion() {
     define: {
       underscored: true,
     },
+    logging: false,
   });
 
   return sequelize;
