@@ -1,6 +1,6 @@
 const Tournament = require("./tournament");
 const Sponsor = require("./sponsor");
-const Game = require("./game");
+const Sport = require("./sport");
 const Club = require("./club");
 const Level = require("./level");
 
@@ -36,18 +36,20 @@ Club.hasMany(Tournament, {
 });
 
 Tournament.belongsToMany(Club, {
-  foreignKey: "club_id",
   as: "club",
+  through: "tournament_has_club",
+  foreignKey: "tournament_id",
+  otherKey: "club_id",
 });
 
-Tournament.belongsTo(Game, {
-  foreignKey: "game_id",
-  as: "game",
+Tournament.belongsTo(Sport, {
+  foreignKey: "sport_id",
+  as: "sport",
 });
 
-Game.hasMany(Tournament, {
+Sport.hasMany(Tournament, {
   foreignKey: "tournament_id",
   as: "tournament",
 });
 
-module.exports = { Tournament, Sponsor, Game, Club, Level };
+module.exports = { Tournament, Sponsor, Sport, Club, Level };
