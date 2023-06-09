@@ -1,6 +1,6 @@
 Tournaments: code_tournament, name, description
-posseder, 0N Games, 11 Tournaments
-Games: code_game, name, description
+posseder, 0N Sports, 11 Tournaments
+Sports: code_sport, name, description
 
 choisir, NN Tournaments, 0N Clubs
 

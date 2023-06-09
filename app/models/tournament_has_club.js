@@ -7,7 +7,7 @@ class TournamentHasClub extends Model {}
 TournamentHasClub.init(
   {
     tournament_id: DataTypes.INTEGER,
-    club_id: DataTypes.INTEGER,
+    club_t_id: DataTypes.INTEGER,
   },
   {
     sequelize: getConnexion(),

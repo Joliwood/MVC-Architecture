@@ -1,6 +1,6 @@
-const Tournament = require("./tournament");
+// const Tournament = require("./tournament");
 const Sponsor = require("./sponsor");
-const Sport = require("./sport");
+// const Sport = require("./sport");
 const Club = require("./club");
 const Level = require("./level");
 
@@ -11,7 +11,7 @@ const Level = require("./level");
 // n,n = belongsToMany
 
 Level.hasMany(Club, {
-  foreignKey: "club_id",
+  foreignKey: "level_id",
   as: "club",
 });
 
@@ -20,29 +20,33 @@ Club.belongsTo(Level, {
   as: "level",
 });
 
-// Sponsor.hasMany(Club, {
-//   foreignKey: "club_id",
-//   as: "club",
-// });
-
-// Ici dans le MCD on est en 0,N MAIS on passe par un tableau d'association donc on prendra belongsToMany
-Club.belongsToMany(Sponsor, {
+Sponsor.belongsToMany(Club, {
   foreignKey: "club_id",
-  as: "sponsor",
+  as: "club",
   through: "club_has_sponsor",
   otherKey: "sponsor_id",
 });
 
+// Ici dans le MCD on est en 0,N MAIS on passe par un tableau d'association donc on prendra belongsToMany
+Club.belongsToMany(Sponsor, {
+  foreignKey: "sponsor_id",
+  as: "sponsor",
+  through: "club_has_sponsor",
+  otherKey: "club_id",
+});
+
+// Jusqu'ici, tout va bien
+
+// Tournament.belongsToMany(Club, {
+//   foreignKey: "tournament_id",
+//   as: "club",
+//   through: "tournament_has_club",
+//   otherKey: "club_t_id",
+// });
+
 // Club.hasMany(Tournament, {
 //   foreignKey: "tournament_id",
 //   as: "tournament",
-// });
-
-// Tournament.belongsToMany(Club, {
-//   as: "club",
-//   through: "tournament_has_club",
-//   foreignKey: "tournament_id",
-//   otherKey: "club_id",
 // });
 
 // Tournament.belongsTo(Sport, {
@@ -55,4 +59,10 @@ Club.belongsToMany(Sponsor, {
 //   as: "tournament",
 // });
 
-module.exports = { Tournament, Sponsor, Sport, Club, Level };
+module.exports = {
+  // Tournament,
+  Sponsor,
+  // Sport,
+  Club,
+  Level,
+};

@@ -27,20 +27,20 @@ INSERT INTO "club_has_sponsor" ("club_id", "sponsor_id") VALUES
 (4, 2),
 (5, 3);
 
-INSERT INTO "sport" ("name", "description") VALUES
-('Basketball', 'Jeu entre deux équipes de cinq joueurs qui doivent lancer un ballon dans le panier du camp adverse.'),
-('Badminton', 'Sport dans lequel on se renvoie un volant par-dessus un filet'),
-('League of Legends', 'Jeu vidéo multijoueur de stratégie et d''actions en ligne, où les joueurs s''affrontent par équipe de cinq pour détruire la base adverse.');
+-- INSERT INTO "sport" ("name", "description") VALUES
+-- ('Basketball', 'Jeu entre deux équipes de cinq joueurs qui doivent lancer un ballon dans le panier du camp adverse.'),
+-- ('Badminton', 'Sport dans lequel on se renvoie un volant par-dessus un filet'),
+-- ('League of Legends', 'Jeu vidéo multijoueur de stratégie et d''actions en ligne, où les joueurs s''affrontent par équipe de cinq pour détruire la base adverse.');
 
-INSERT INTO "tournament" ("name", "description", "event_date", "sport_id") VALUES
-('Raquette world championship', 'Compétition de Badminton entre les extrêmes opposés !', '2023-07-12', 2),
-('World independant split', 'Les équipes mondiales s''affrontent pour des oeuvres de charité', '2023-08-25', 3);
+-- INSERT INTO "tournament" ("name", "description", "event_date", "sport_id") VALUES
+-- ('Raquette world championship', 'Compétition de Badminton entre les extrêmes opposés !', '2023-07-12', 2),
+-- ('World independant split', 'Les équipes mondiales s''affrontent pour des oeuvres de charité', '2023-08-25', 3);
 
-INSERT INTO "tournament_has_club" ("tournament_id", "club_id") VALUES
-(1, 1),
-(1, 2),
-(2, 1),
-(2, 3),
-(2, 4);
+-- INSERT INTO "tournament_has_club" ("tournament_id", "club_id") VALUES
+-- (1, 1),
+-- (1, 2),
+-- (2, 1),
+-- (2, 3),
+-- (2, 4);
 
 COMMIT;

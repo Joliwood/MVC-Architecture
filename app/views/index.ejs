@@ -9,17 +9,26 @@
   </head>
   <%- include("partials/header") %>
 
-  <div>
+  <div class="flex my-5">
     <%# if (locals.levels && locals.levels.length) { %>
+      <h3>Liste des levels :</h3>
       <% levels.forEach(level => { %>
         <span><%= level.name %></span>
       <% }); %>
     <%# }; %>
   </div>
 
-  <div>
+  <div class="flex my-5">
+    <h3>Liste des sponsors :</h3>
     <% sponsors.forEach(sponsor => { %>
       <span><%= sponsor.name %></span>
+    <% }); %>
+  </div>
+
+  <div class="flex my-5">
+    <h3>Liste des clubs :</h3>
+    <% clubs.forEach(club => { %>
+      <span><%= club.name %></span>
     <% }); %>
   </div>
 
