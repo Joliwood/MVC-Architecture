@@ -6,11 +6,7 @@ class Sponsor extends Model {}
 Sponsor.init(
   {
     name: DataTypes.TEXT,
-    description: DataTypes.TEXT,
-    club_id: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
+    slogan: DataTypes.TEXT,
   },
   {
     sequelize: getConnexion(),

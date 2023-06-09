@@ -5,9 +5,10 @@ class Tournament extends Model {}
 
 Tournament.init(
   {
+    name: DataTypes.TEXT,
     description: DataTypes.TEXT,
-    game_id: DataTypes.INTEGER,
-    // Tableau d'association pour les clubs
+    event_date: DataTypes.DATE,
+    sport_id: DataTypes.INTEGER,
   },
   {
     sequelize: getConnexion(),
@@ -17,4 +18,3 @@ Tournament.init(
 );
 
 module.exports = Tournament;
-Tournament;

@@ -20,36 +20,39 @@ Club.belongsTo(Level, {
   as: "level",
 });
 
-Sponsor.hasMany(Club, {
+// Sponsor.hasMany(Club, {
+//   foreignKey: "club_id",
+//   as: "club",
+// });
+
+// Ici dans le MCD on est en 0,N MAIS on passe par un tableau d'association donc on prendra belongsToMany
+Club.belongsToMany(Sponsor, {
   foreignKey: "club_id",
-  as: "club",
-});
-
-Club.hasMany(Sponsor, {
-  foreignKey: "sponsor_id",
   as: "sponsor",
+  through: "club_has_sponsor",
+  otherKey: "sponsor_id",
 });
 
-Club.hasMany(Tournament, {
-  foreignKey: "tournament_id",
-  as: "tournament",
-});
+// Club.hasMany(Tournament, {
+//   foreignKey: "tournament_id",
+//   as: "tournament",
+// });
 
-Tournament.belongsToMany(Club, {
-  as: "club",
-  through: "tournament_has_club",
-  foreignKey: "tournament_id",
-  otherKey: "club_id",
-});
+// Tournament.belongsToMany(Club, {
+//   as: "club",
+//   through: "tournament_has_club",
+//   foreignKey: "tournament_id",
+//   otherKey: "club_id",
+// });
 
-Tournament.belongsTo(Sport, {
-  foreignKey: "sport_id",
-  as: "sport",
-});
+// Tournament.belongsTo(Sport, {
+//   foreignKey: "sport_id",
+//   as: "sport",
+// });
 
-Sport.hasMany(Tournament, {
-  foreignKey: "tournament_id",
-  as: "tournament",
-});
+// Sport.hasMany(Tournament, {
+//   foreignKey: "tournament_id",
+//   as: "tournament",
+// });
 
 module.exports = { Tournament, Sponsor, Sport, Club, Level };

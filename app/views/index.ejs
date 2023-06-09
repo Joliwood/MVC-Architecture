@@ -8,6 +8,21 @@
     <title>Accueil</title>
   </head>
   <%- include("partials/header") %>
+
+  <div>
+    <%# if (locals.levels && locals.levels.length) { %>
+      <% levels.forEach(level => { %>
+        <span><%= level.name %></span>
+      <% }); %>
+    <%# }; %>
+  </div>
+
+  <div>
+    <% sponsors.forEach(sponsor => { %>
+      <span><%= sponsor.name %></span>
+    <% }); %>
+  </div>
+
   <body class="bg-white min-h-screen flex flex-col">
     <h1 class="prose prose-2xl mx-auto my-10 text-gray-600">Tous les tournois en cours</h1>
     <section class="flex bg-gray-200 justify-center items-center	p-5 flex-auto">

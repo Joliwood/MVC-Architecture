@@ -6,7 +6,8 @@ class Club extends Model {}
 Club.init(
   {
     name: DataTypes.TEXT,
-    description: DataTypes.TEXT,
+    country: DataTypes.TEXT,
+    level_id: DataTypes.INTEGER,
   },
 
   {
