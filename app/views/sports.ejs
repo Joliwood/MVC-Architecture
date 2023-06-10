@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/style.css"></link>
+    <title>Tournamental</title>
+  </head>
+  <%- include("partials/header") %>
+
+  <body class="bg-white min-h-screen flex flex-col">
+    <h1 class="prose prose-2xl mx-auto my-10 text-gray-600">Tous les tournois en cours</h1>
+    <section class="flex bg-gray-200 justify-center items-center	p-5 flex-auto">
+        <div class="flex my-5">
+            <h3>Liste des sports :</h3>
+            <% sports.forEach(sport => { %>
+              <span><%= sport.name %></span>
+            <% }); %>
+          </div>
+    </section>
+  </body>
+</html>

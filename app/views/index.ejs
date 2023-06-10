@@ -5,37 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheets/style.css"></link>
-    <title>Accueil</title>
+    <title>Tournamental</title>
   </head>
   <%- include("partials/header") %>
-
-  <div class="flex my-5">
-    <%# if (locals.levels && locals.levels.length) { %>
-      <h3>Liste des levels :</h3>
-      <% levels.forEach(level => { %>
-        <span><%= level.name %></span>
-      <% }); %>
-    <%# }; %>
-  </div>
-
-  <div class="flex my-5">
-    <h3>Liste des sponsors :</h3>
-    <% sponsors.forEach(sponsor => { %>
-      <span><%= sponsor.name %></span>
-    <% }); %>
-  </div>
-
-  <div class="flex my-5">
-    <h3>Liste des clubs :</h3>
-    <% clubs.forEach(club => { %>
-      <span><%= club.name %></span>
-    <% }); %>
-  </div>
 
   <body class="bg-white min-h-screen flex flex-col">
     <h1 class="prose prose-2xl mx-auto my-10 text-gray-600">Tous les tournois en cours</h1>
     <section class="flex bg-gray-200 justify-center items-center	p-5 flex-auto">
-      <%- include("partials/card") %>
+      <%- include("partials/tournamentsTable") %>
     </section>
   </body>
 </html>

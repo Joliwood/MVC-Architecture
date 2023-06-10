@@ -1,0 +1,66 @@
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" />
+          </label>
+        </th>
+        <th>Tournois</th>
+        <th>Concurrents</th>
+        <th>Sponsors</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tournaments.forEach(tournament => { %>
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" />
+          </label>
+        </th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img
+                  src="https://www.neuillysurmarne.fr/wp-content/uploads/2015/10/BADMINTON.jpg"
+                  alt="Avatar Tailwind CSS Component"
+                  class="w-[48px]"
+                />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold"><%= tournament.name %></div>
+              <div class="text-sm opacity-50"><%= tournament.sport.name %></div>
+            </div>
+          </div>
+        </td>
+        <td class="flex flex-col gap-3">
+          <% tournament.club.forEach(c => { %> <span><%= c.name %></span> <% })
+          %>
+        </td>
+        <td>
+          <%# tournament.sponsor.forEach(s => { %> <%# s.name %> <%# }) %>
+        </td>
+        <th>
+          <button class="btn btn-ghost btn-xs">details</button>
+        </th>
+      </tr>
+      <% }) %>
+    </tbody>
+    <!-- foot -->
+    <!-- <tfoot>
+      <tr>
+        <th></th>
+        <th>Tournois</th>
+        <th>Concurrents</th>
+        <th>Sponsors</th>
+        <th></th>
+      </tr>
+    </tfoot> -->
+  </table>
+</div>

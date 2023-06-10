@@ -1,6 +1,6 @@
-// const Tournament = require("./tournament");
+const Tournament = require("./tournament");
 const Sponsor = require("./sponsor");
-// const Sport = require("./sport");
+const Sport = require("./sport");
 const Club = require("./club");
 const Level = require("./level");
 
@@ -10,6 +10,7 @@ const Level = require("./level");
 // 0,n = hasMany
 // n,n = belongsToMany
 
+// On va chercher en foreignKey la clé qui lie les deux, donc ici le même level_id qui se trouve dans "club", par contre on va quand même chercher avec "as" dans quel model on va chercher, donc la cible de la liaison
 Level.hasMany(Club, {
   foreignKey: "level_id",
   as: "club",
@@ -35,34 +36,34 @@ Club.belongsToMany(Sponsor, {
   otherKey: "club_id",
 });
 
-// Jusqu'ici, tout va bien
+Tournament.belongsToMany(Club, {
+  foreignKey: "club_id",
+  as: "club",
+  through: "tournament_has_club",
+  otherKey: "tournament_id",
+});
 
-// Tournament.belongsToMany(Club, {
-//   foreignKey: "tournament_id",
-//   as: "club",
-//   through: "tournament_has_club",
-//   otherKey: "club_t_id",
-// });
+Club.belongsToMany(Tournament, {
+  foreignKey: "tournament_id",
+  as: "tournament",
+  through: "tournament_has_club",
+  otherKey: "club_id",
+});
 
-// Club.hasMany(Tournament, {
-//   foreignKey: "tournament_id",
-//   as: "tournament",
-// });
+Tournament.belongsTo(Sport, {
+  foreignKey: "sport_id",
+  as: "sport",
+});
 
-// Tournament.belongsTo(Sport, {
-//   foreignKey: "sport_id",
-//   as: "sport",
-// });
-
-// Sport.hasMany(Tournament, {
-//   foreignKey: "tournament_id",
-//   as: "tournament",
-// });
+Sport.hasMany(Tournament, {
+  foreignKey: "sport_id",
+  as: "tournament",
+});
 
 module.exports = {
-  // Tournament,
+  Tournament,
   Sponsor,
-  // Sport,
+  Sport,
   Club,
   Level,
 };

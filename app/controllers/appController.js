@@ -1,10 +1,4 @@
-const {
-  Club,
-  Level,
-  Sponsor,
-  // Sport,
-  // Tournament
-} = require("../models");
+const { Club, Level, Sponsor, Sport, Tournament } = require("../models");
 
 const appController = {
   async index(req, res) {
@@ -14,10 +8,12 @@ const appController = {
         include: { all: true, nested: true },
       });
       const sponsors = await Sponsor.findAll();
-      // const sports = await Sport.findAll();
-      // const tournaments = await Tournament.findAll();
+      const sports = await Sport.findAll();
+      const tournaments = await Tournament.findAll({
+        include: { all: true, nested: true },
+      });
 
-      res.render("index", { levels, sponsors, clubs });
+      res.render("index", { levels, sponsors, clubs, sports, tournaments });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);
