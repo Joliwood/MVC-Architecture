@@ -6,7 +6,7 @@ class ClubHasSponsor extends Model {}
 
 ClubHasSponsor.init(
   {
-    club_id: DataTypes.INTEGER,
+    club_sponsor_id: DataTypes.INTEGER,
     sponsor_id: DataTypes.INTEGER,
   },
   {

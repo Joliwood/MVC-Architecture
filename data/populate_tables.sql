@@ -19,7 +19,7 @@ INSERT INTO "club" ("name", "country","level_id") VALUES
 ('Renewal', 'Corée du Sud', 5),
 ('Avanzando Juntos', 'Espagne', 1);
 
-INSERT INTO "club_has_sponsor" ("club_id", "sponsor_id") VALUES
+INSERT INTO "club_has_sponsor" ("club_sponsor_id", "sponsor_id") VALUES
 (1, 1),
 (2, 1),
 (2, 2),
@@ -38,9 +38,9 @@ INSERT INTO "tournament" ("name", "description", "event_date", "sport_id") VALUE
 
 INSERT INTO "tournament_has_club" ("tournament_id", "club_id") VALUES
 (1, 1),
-(1, 2),
+-- (1, 2),
 (2, 1),
-(2, 3),
-(2, 4);
+(2, 2),
+(2, 5);
 
 COMMIT;

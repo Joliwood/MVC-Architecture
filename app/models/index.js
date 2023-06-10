@@ -22,7 +22,7 @@ Club.belongsTo(Level, {
 });
 
 Sponsor.belongsToMany(Club, {
-  foreignKey: "club_id",
+  foreignKey: "club_sponsor_id",
   as: "club",
   through: "club_has_sponsor",
   otherKey: "sponsor_id",
@@ -33,7 +33,7 @@ Club.belongsToMany(Sponsor, {
   foreignKey: "sponsor_id",
   as: "sponsor",
   through: "club_has_sponsor",
-  otherKey: "club_id",
+  otherKey: "club_sponsor_id",
 });
 
 Tournament.belongsToMany(Club, {

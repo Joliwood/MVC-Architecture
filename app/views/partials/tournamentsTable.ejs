@@ -14,8 +14,10 @@
         <th></th>
       </tr>
     </thead>
+    <%# console.log(tournaments[1].club[1]) %>
     <tbody>
       <% tournaments.forEach(tournament => { %>
+
       <tr>
         <th>
           <label>
@@ -40,9 +42,11 @@
           </div>
         </td>
         <td class="flex flex-col gap-3">
-          <% tournament.club.forEach(c => { %> <span><%= c.name %></span> <% })
-          %>
+          <% tournament.club.forEach(c => { %>
+          <span><%= c.name %></span>
+          <% }) %>
         </td>
+
         <td>
           <%# tournament.sponsor.forEach(s => { %> <%# s.name %> <%# }) %>
         </td>
