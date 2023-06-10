@@ -1,27 +1,25 @@
-<div class="overflow-x-auto">
+<div class="overflow-x-auto text-gray-600">
   <table class="table">
-    <!-- head -->
     <thead>
       <tr>
         <th>
           <label>
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox" class="checkbox border-gray-400" />
           </label>
         </th>
-        <th>Tournois</th>
-        <th>Concurrents</th>
-        <th>Sponsors</th>
+        <th class="text-gray-500">Tournois</th>
+        <th class="text-gray-500">Concurrents</th>
+        <th class="text-gray-500">Sponsors</th>
         <th></th>
       </tr>
     </thead>
-    <%# console.log(tournaments[1].club[1]) %>
     <tbody>
       <% tournaments.forEach(tournament => { %>
 
       <tr>
         <th>
           <label>
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox" class="checkbox border-gray-400" />
           </label>
         </th>
         <td>
@@ -29,7 +27,7 @@
             <div class="avatar">
               <div class="mask mask-squircle w-12 h-12">
                 <img
-                  src="https://www.neuillysurmarne.fr/wp-content/uploads/2015/10/BADMINTON.jpg"
+                  src="<%= tournament.sport.picture %>"
                   alt="Avatar Tailwind CSS Component"
                   class="w-[48px]"
                 />
@@ -41,30 +39,40 @@
             </div>
           </div>
         </td>
-        <td class="flex flex-col gap-3">
+        <td>
           <% tournament.club.forEach(c => { %>
-          <span><%= c.name %></span>
+          <div class="my-2"><%= c.name %> <strong>(<%= c.country %>)</strong></div>
           <% }) %>
         </td>
 
         <td>
-          <%# tournament.sponsor.forEach(s => { %> <%# s.name %> <%# }) %>
+          <% tournament.club.forEach((club, clubIndex) => { %>
+            <div class="my-2">
+              <% club.sponsor.forEach((sponsor, sponsorIndex) => { %>
+                <span><%= sponsor.name %></span>
+                <% if (sponsorIndex !== club.sponsor.length - 1) { %>
+                  <span>-</span>
+                <% } %>
+                
+              <% }) %>
+              <strong>(<%= club.country %>)</strong>
+            </div>
+          <% }) %>
         </td>
+
+        <!-- Version simplifiée sans - entre chaque sponsor -->
+        <!-- <td>
+          <%# tournament.club.forEach(club => { %>
+            <%# club.sponsor.forEach(sponsor => { %>
+              <span><%# sponsor.name %></span>
+            <%# }) %>
+          <%# }) %>
+        </td> -->
         <th>
           <button class="btn btn-ghost btn-xs">details</button>
         </th>
       </tr>
       <% }) %>
     </tbody>
-    <!-- foot -->
-    <!-- <tfoot>
-      <tr>
-        <th></th>
-        <th>Tournois</th>
-        <th>Concurrents</th>
-        <th>Sponsors</th>
-        <th></th>
-      </tr>
-    </tfoot> -->
   </table>
 </div>

@@ -7,6 +7,7 @@ Sport.init(
   {
     name: DataTypes.TEXT,
     description: DataTypes.TEXT,
+    picture: DataTypes.TEXT,
   },
   {
     sequelize: getConnexion(),

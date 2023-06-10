@@ -1,6 +1,6 @@
 Tournament: code_tournament, name, description
 posseder, 0N Sport, 11 Tournament
-Sport: code_sport, name, description
+Sport: code_sport, name, description, picture
 
 choisir, NN Tournament, 0N Club
 

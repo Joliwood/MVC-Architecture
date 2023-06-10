@@ -22,32 +22,32 @@ Club.belongsTo(Level, {
 });
 
 Sponsor.belongsToMany(Club, {
-  foreignKey: "club_sponsor_id",
-  as: "club",
-  through: "club_has_sponsor",
-  otherKey: "sponsor_id",
-});
-
-// Ici dans le MCD on est en 0,N MAIS on passe par un tableau d'association donc on prendra belongsToMany
-Club.belongsToMany(Sponsor, {
   foreignKey: "sponsor_id",
-  as: "sponsor",
+  as: "club",
   through: "club_has_sponsor",
   otherKey: "club_sponsor_id",
 });
 
+// Ici dans le MCD on est en 0,N MAIS on passe par un tableau d'association donc on prendra belongsToMany
+Club.belongsToMany(Sponsor, {
+  foreignKey: "club_sponsor_id",
+  as: "sponsor",
+  through: "club_has_sponsor",
+  otherKey: "sponsor_id",
+});
+
 Tournament.belongsToMany(Club, {
-  foreignKey: "club_id",
+  foreignKey: "tournament_id",
   as: "club",
   through: "tournament_has_club",
-  otherKey: "tournament_id",
+  otherKey: "club_id",
 });
 
 Club.belongsToMany(Tournament, {
-  foreignKey: "tournament_id",
+  foreignKey: "club_id",
   as: "tournament",
   through: "tournament_has_club",
-  otherKey: "club_id",
+  otherKey: "tournament_id",
 });
 
 Tournament.belongsTo(Sport, {
