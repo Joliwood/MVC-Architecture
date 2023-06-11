@@ -1,3 +1,5 @@
+const { User } = require("../models");
+
 const authController = {
   register(req, res) {
     res.render("signup");
@@ -6,10 +8,10 @@ const authController = {
   async createUser(req, res) {
     // req.body devrait passer par un middleware, pour valider les champs du formulaire
     const {
-      email,
-      password,
       firstname,
       lastname,
+      email,
+      password,
       confirm_password: passwordConfirm,
     } = req.body;
 

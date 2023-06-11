@@ -9,6 +9,7 @@ dotenv.config();
 server.set("view engine", "ejs");
 server.set("views", viewsDirectory);
 server.use(express.static("public"));
+server.use(express.urlencoded({ extended: false }));
 
 const router = require("./app/router");
 

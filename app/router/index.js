@@ -15,7 +15,7 @@ router.get("/clubs", clubController.index);
 router.get("/sponsors", sponsorController.index);
 
 router.get("/signup", authController.register);
-router.post("/register", authController.createUser);
+router.post("/signup", authController.createUser);
 
 router.get("/login", authController.login);
 

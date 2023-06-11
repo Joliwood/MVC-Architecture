@@ -3,6 +3,7 @@ const Sponsor = require("./sponsor");
 const Sport = require("./sport");
 const Club = require("./club");
 const Level = require("./level");
+const User = require("./user");
 
 // Sequelize:
 // 0,1 = hasOne
@@ -66,4 +67,5 @@ module.exports = {
   Sport,
   Club,
   Level,
+  User,
 };
