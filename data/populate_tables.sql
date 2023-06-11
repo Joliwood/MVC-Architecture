@@ -37,6 +37,10 @@ INSERT INTO "tournament" ("name", "description", "event_date", "sport_id") VALUE
 ('World independant split', 'Les équipes mondiales s''affrontent pour des oeuvres de charité', '2023-08-25', 3),
 ('Basketball World Tour', 'Compétition mondiale entre passionnés', '2024-05-05', 1);
 
+INSERT INTO "user" ("firstname", "lastname", "email", "password") VALUES
+('Philippe', 'Candille', 'philippe@oclock.io', '$2b$10$7vwYGrz2TGeyG4X8YnD9BOag9I.YKGUTJELs64qGmcK/syHu2BzTG'),
+('Chuck', 'Norris', 'chuck@oclock.io', '$2b$10$7vwYGrz2TGeyG4X8YnD9BOag9I.YKGUTJELs64qGmcK/syHu2BzTG');
+
 INSERT INTO "tournament_has_club" ("tournament_id", "club_id") VALUES
 -- Badminton : France vs Angleterre
 (1, 1),
