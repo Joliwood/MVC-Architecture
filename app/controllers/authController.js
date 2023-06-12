@@ -26,7 +26,8 @@ const authController = {
     if (password !== passwordConfirm) {
       return res.render("signup", {
         error: "Les deux mots de passe ne sont pas identiques",
-        passwordMismatch: true,
+        registerState: "wrongPassword",
+        popupTitle: "Les mots de passe ne sont pas identiques",
       });
     }
     try {
@@ -38,6 +39,8 @@ const authController = {
       if (existsUser) {
         return res.render("signup", {
           error: "Un compte a déjà été enregistré avec cette adresse-mail",
+          registerState: "userAlreadyExists",
+          popupTitle: "L'utilisateur existe déjà",
         });
       }
 
@@ -51,7 +54,9 @@ const authController = {
       });
 
       // res.redirect("/login?registered=true");
-      res.redirect("/login");
+      // registerState: "userCreated",
+      // popupTitle: "Votre compte a bien été créé",
+      res.redirect("/login?registered=true");
     } catch (error) {
       console.log(error.message);
       res.status(500).send(error.message);
@@ -59,14 +64,17 @@ const authController = {
   },
 
   login(req, res) {
-    // let registered = false;
+    let registered = false;
 
-    // if (req.query.registered) {
-    //     registered = req.query.registered; // true, car queryString lui passe true depuis la méthode register
-    // }
+    if (req.query.registered) {
+      registered = req.query.registered;
+    }
 
-    // res.render('login', { registered });
-    res.render("login");
+    res.render("login", {
+      registered,
+      registerState: "userCreated",
+      popupTitle: "Votre compte a bien été créé",
+    });
   },
 };
 

@@ -1,22 +1,35 @@
-  <h1>Se connecter</h1>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css"></link>
+  </head>
+  <body>
+    <% if (locals.registered && locals.registered === "true") { %>
+      <%- include("partials/notification") %>
+    <% } %>
+    
+    <h1>Se connecter</h1>
 
-  <!-- Toast en cas d'erreur  -->
-  <% if (locals.error) { %>
-  <div class="alert alert-danger" role="alert">
-    <%= error %>
-  </div>
-  <% } %>
-
-  <form action="/login" method="POST">
-    <label class="form-label h4" for="email">Email</label>
-    <input class="form-control mb-4" type="email" id="email" name="email" placeholder="email@domain.com">
-
-    <label class="form-label h4" for="password">Mot de passe</label>
-    <input class="form-control" type="password" id="password" name="password" placeholder="*********">
-
-    <input class="btn btn-primary d-block my-4 mx-auto" type="submit" value="Se connecter">
-  </form>
-
-  <% if (locals.registered && locals.registered === "true") { %>
-    <script type="module" src="/js/notify.js"></script>
-  <% } %>
+    <% if (locals.error) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %>
+  
+    <form action="/login" method="POST">
+      <label class="form-label h4" for="email">Email</label>
+      <input class="form-control mb-4" type="email" id="email" name="email" placeholder="email@domain.com">
+  
+      <label class="form-label h4" for="password">Mot de passe</label>
+      <input class="form-control" type="password" id="password" name="password" placeholder="*********">
+  
+      <input class="btn btn-primary d-block my-4 mx-auto" type="submit" value="Se connecter">
+    </form>
+  
+    
+  </body>
+  </html>
