@@ -26,6 +26,7 @@ const authController = {
     if (password !== passwordConfirm) {
       return res.render("signup", {
         error: "Les deux mots de passe ne sont pas identiques",
+        passwordMismatch: true,
       });
     }
     try {
