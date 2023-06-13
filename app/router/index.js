@@ -20,6 +20,8 @@ router.post("/signup", authController.createUser);
 router.get("/login", authController.login);
 router.post("/login", authController.createSession);
 
+router.get("/logout", authController.destroy);
+
 router.use((req, res, next) => {
   res.status(404).render("404");
 });

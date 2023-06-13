@@ -7,7 +7,7 @@ const appController = {
         include: { all: true, nested: true, asArray: true },
       });
 
-      res.render("index", { tournaments });
+      res.render("index", { tournaments, req });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);

@@ -87,7 +87,7 @@ const authController = {
     });
   },
 
-  createSession(req, res) {
+  async createSession(req, res) {
     const { email, password } = req.body;
 
     if (!emailValidator.validate(email)) {
@@ -97,7 +97,44 @@ const authController = {
         popupTitle: "Veuillez rentrer une adresse mail valide",
       });
     }
-    res.render("index");
+
+    try {
+      const existsUser = await User.findOne({
+        where: { email },
+        attributes: { exclude: ["created_at", "updated_at"] },
+      });
+
+      if (!existsUser) {
+        return res.render("login", {
+          error: "Aucun compte n'a été créé avec cette adresse mail",
+        });
+      }
+
+      const ok = await bcrypt.compare(password, existsUser.password);
+
+      if (!ok) {
+        return res.render("login", {
+          error: "Mot de passe erroné",
+        });
+      }
+
+      req.session.userId = existsUser.id;
+      req.session.name = existsUser.firstname + " " + existsUser.lastname;
+
+      res.redirect("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+
+  destroy(req, res) {
+    req.session.user = null;
+    res.locals.user = null;
+    req.session.userId = null;
+
+    req.session.destroy();
+
+    res.redirect("/");
   },
 };
 

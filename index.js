@@ -1,17 +1,21 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const dotenv = require("dotenv");
 const server = express();
+const { initSession, addUsersTolocals } = require("./middlewares/initSession");
 
 const viewsDirectory = path.join(__dirname, "app/views");
 
-dotenv.config();
 server.set("view engine", "ejs");
 server.set("views", viewsDirectory);
 server.use(express.static("public"));
 server.use(express.urlencoded({ extended: false }));
 
 const router = require("./app/router");
+
+server.use(initSession);
+
+server.use(addUsersTolocals);
 
 server.use(router);
 

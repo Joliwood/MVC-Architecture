@@ -56,7 +56,17 @@
     </ul>
   </div>
   <div class="navbar-end px-5 flex gap-5">
-    <a href="/login" class="btn text-primary-content">Login</a>
-    <a href="/signup" class="btn text-primary-content">Sign up</a>
+    <% if (!locals.req.session.userId) { %>
+      <a href="/login" class="btn text-primary-content">Connecter</a>
+      <a href="/signup" class="btn text-primary-content">S'inscrire</a>
+    <% } else { %>
+      <h3 class="text-primary-content"><%= locals.req.session.name %></h3>
+      <div class="avatar">
+        <div class="w-24 rounded">
+          <img src="https://i.pravatar.cc/40" alt="random avatar"/>
+        </div>
+      </div>
+      <a href="/logout" class="btn text-primary-content">Déconnecter</a>
+    <% } %>
   </div>
 </div>
