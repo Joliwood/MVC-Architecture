@@ -39,5 +39,8 @@
     "daisyui": "^3.0.20",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=16.9.0"
   }
 }
