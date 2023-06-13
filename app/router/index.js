@@ -18,6 +18,7 @@ router.get("/signup", authController.register);
 router.post("/signup", authController.createUser);
 
 router.get("/login", authController.login);
+router.post("/login", authController.createSession);
 
 router.use((req, res, next) => {
   res.status(404).render("404");

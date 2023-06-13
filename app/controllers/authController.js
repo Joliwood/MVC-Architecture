@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const bcrypt = require("bcrypt");
 const emailValidator = require("email-validator");
 
 const authController = {
@@ -54,18 +55,19 @@ const authController = {
         });
       }
 
+      // Chiffrage du mot de passe
+      const saltRounds = 10;
+      const salt = await bcrypt.genSalt(saltRounds);
+      const encryptedPass = await bcrypt.hash(password, salt);
+
       await User.create({
         firstname,
         lastname,
         email,
-        // role: 'user',
-        // password: encryptedPass,
-        password,
+        role: "user",
+        password: encryptedPass,
       });
 
-      // res.redirect("/login?registered=true");
-      // registerState: "userCreated",
-      // popupTitle: "Votre compte a bien été créé",
       res.redirect("/login?registered=true");
     } catch (error) {
       console.log(error.message);
@@ -74,17 +76,28 @@ const authController = {
   },
 
   login(req, res) {
-    let registered = false;
-
-    if (req.query.registered) {
-      registered = req.query.registered;
-    }
+    const registered = req.query.registered || false;
+    const registerState = registered ? "success" : "";
+    const popupTitle = registered ? "Votre compte a bien été créé" : "";
 
     res.render("login", {
       registered,
-      registerState: "success",
-      popupTitle: "Votre compte a bien été créé",
+      registerState,
+      popupTitle,
     });
+  },
+
+  createSession(req, res) {
+    const { email, password } = req.body;
+
+    if (!emailValidator.validate(email)) {
+      return res.render("login", {
+        error: "L'adresse mail n'est pas correcte",
+        registerState: "error",
+        popupTitle: "Veuillez rentrer une adresse mail valide",
+      });
+    }
+    res.render("index");
   },
 };
 

@@ -8,17 +8,10 @@
     <link rel="stylesheet" href="stylesheets/style.css"></link>
   </head>
   <body class="flex items-center flex-col min-h-screen justify-center">
-    <% if (locals.registered && locals.registered === "true") { %>
-      <%- include("partials/notification") %>
-    <% } %>
+
+    <%- include("partials/notification") %>
     
     <h1>Se connecter</h1>
-
-    <% if (locals.error) { %>
-    <div class="alert alert-danger" role="alert">
-      <%= error %>
-    </div>
-    <% } %>
   
     <form action="/login" method="POST">
       <label class="form-label h4" for="email">Email</label>
