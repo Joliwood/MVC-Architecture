@@ -5,7 +5,7 @@ const sponsorController = {
     try {
       const sponsors = await Sponsor.findAll();
 
-      res.render("sponsors", { sponsors });
+      res.render("sponsors", { sponsors, req });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);

@@ -4,7 +4,7 @@
       <label tabindex="0" class="btn btn-ghost lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          class="h-5 w-5 text-primary-content"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -21,10 +21,16 @@
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-primary-content"
       >
-        <li><a href="/">Accueil</a></li>
+        <li><a href="/">ddd</a></li>
         <li><a href="/clubs">Clubs</a></li>
         <li><a href="/sports">Sports</a></li>
         <li><a href="/sponsors">Sponsors</a></li>
+        <% if (!locals.req.session.userId) { %>
+          <li><a href="/login" class="btn text-primary-content">Connecter</a></li>
+          <li><a href="/signup" class="btn text-primary-content">S'inscrire</a></li>
+        <% } else { %>
+          <li><a href="/logout" class="btn text-primary-content">Déconnecter</a></li>
+          <% } %>
       </ul>
     </div>
     <a class="btn btn-ghost normal-case text-xl text-primary-content"
@@ -41,8 +47,8 @@
   </div>
   <div class="navbar-end px-5 flex gap-5">
     <% if (!locals.req.session.userId) { %>
-      <a href="/login" class="btn text-primary-content">Connecter</a>
-      <a href="/signup" class="btn text-primary-content">S'inscrire</a>
+      <a href="/login" class="btn text-primary-content hidden lg:flex">Connecter</a>
+      <a href="/signup" class="btn text-primary-content hidden lg:flex">S'inscrire</a>
     <% } else { %>
       <h3 class="text-primary-content"><%= locals.req.session.name %></h3>
       <div class="avatar">
@@ -50,7 +56,7 @@
           <img src="https://i.pravatar.cc/40" alt="random avatar"/>
         </div>
       </div>
-      <a href="/logout" class="btn text-primary-content">Déconnecter</a>
+      <a href="/logout" class="btn text-primary-content hidden lg:flex">Déconnecter</a>
     <% } %>
   </div>
 </div>

@@ -8,7 +8,7 @@ const sportController = {
         include: { all: true, nested: true },
       });
 
-      res.render("sports", { sports, tournaments });
+      res.render("sports", { sports, tournaments, req });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);

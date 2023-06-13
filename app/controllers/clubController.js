@@ -7,7 +7,7 @@ const clubController = {
         include: { all: true, nested: true },
       });
 
-      res.render("clubs", { clubs });
+      res.render("clubs", { clubs, req });
     } catch (error) {
       console.log(error.message);
       console.log(error.stacks);
