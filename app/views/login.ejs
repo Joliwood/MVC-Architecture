@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="stylesheets/style.css"></link>
   </head>
-  <body>
+  <body class="flex items-center flex-col min-h-screen justify-center">
     <% if (locals.registered && locals.registered === "true") { %>
       <%- include("partials/notification") %>
     <% } %>

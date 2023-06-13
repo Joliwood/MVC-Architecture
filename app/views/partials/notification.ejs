@@ -10,17 +10,7 @@
     <span><%= locals.popupTitle %></span>
 </div>
 
-<% if (locals.registerState == "wrongPassword") { %>
-    <script>
-        const passwordNotification = document.getElementById('error-notification');
-        passwordNotification.classList.toggle('popupAnimation');
-        setTimeout(() => {
-            passwordNotification.classList.toggle('popupAnimation');
-        }, 3000);
-    </script>
-<% } %>
-
-<% if (locals.registerState == "userAlreadyExists") { %>
+<% if (locals.registerState == "error") { %>
     <script>
         const userNotification = document.getElementById('error-notification');
         userNotification.classList.toggle('popupAnimation');
@@ -30,7 +20,7 @@
     </script>
 <% } %>
 
-<% if (locals.registerState == "userCreated") { %>
+<% if (locals.registerState == "success") { %>
     <script>
         const creationNotification = document.getElementById('success-register-notification');
         creationNotification.classList.toggle('popupAnimation');

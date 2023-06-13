@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const emailValidator = require("email-validator");
 
 const authController = {
   register(req, res) {
@@ -26,10 +27,19 @@ const authController = {
     if (password !== passwordConfirm) {
       return res.render("signup", {
         error: "Les deux mots de passe ne sont pas identiques",
-        registerState: "wrongPassword",
+        registerState: "error",
         popupTitle: "Les mots de passe ne sont pas identiques",
       });
     }
+
+    if (!emailValidator.validate(email)) {
+      return res.render("signup", {
+        error: "L'adresse mail n'est pas correcte",
+        registerState: "error",
+        popupTitle: "Veuillez rentrer une adresse mail valide",
+      });
+    }
+
     try {
       const existsUser = await User.findOne({
         where: { email },
@@ -39,7 +49,7 @@ const authController = {
       if (existsUser) {
         return res.render("signup", {
           error: "Un compte a déjà été enregistré avec cette adresse-mail",
-          registerState: "userAlreadyExists",
+          registerState: "error",
           popupTitle: "L'utilisateur existe déjà",
         });
       }
@@ -72,7 +82,7 @@ const authController = {
 
     res.render("login", {
       registered,
-      registerState: "userCreated",
+      registerState: "success",
       popupTitle: "Votre compte a bien été créé",
     });
   },
