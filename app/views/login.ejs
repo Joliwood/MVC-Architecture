@@ -12,16 +12,25 @@
     <%- include("partials/notification") %>
     
     <h1>Se connecter</h1>
-  
-    <form action="/login" method="POST">
-      <label class="form-label h4" for="email">Email</label>
-      <input class="form-control mb-4" type="email" id="email" name="email" placeholder="email@domain.com">
-  
-      <label class="form-label h4" for="password">Mot de passe</label>
-      <input class="form-control" type="password" id="password" name="password" placeholder="*********">
-  
-      <input class="btn btn-primary d-block my-4 mx-auto" type="submit" value="Se connecter">
-    </form>
+
+    <form action="/login" method="POST" class="space-y-4">
+      <div>
+          <label class="label">
+              <span class="text-base label-text">Email</span>
+          </label>
+          <input type="email" placeholder="email@domain.com" class="w-full input input-bordered"  name="email"/>
+      </div>
+      <div>
+          <label class="label">
+              <span class="text-base label-text">Mot de passe</span>
+          </label>
+          <input type="password" placeholder="*********"
+              class="w-full input input-bordered" name="password" />
+      </div>
+      <div>
+          <button class="btn bg-green-700 btn-block text-primary-content" type="submit">Se connecter</button>
+      </div>
+  </form>
   
     
   </body>

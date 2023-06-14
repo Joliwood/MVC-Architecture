@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const emailValidator = require("email-validator");
+const passwordValidator = require("password-validator");
 
 const authController = {
   register(req, res) {
@@ -55,6 +56,33 @@ const authController = {
         });
       }
 
+      // Vérification de la validité du mot de passe
+      const schema = new passwordValidator();
+      schema
+        .is()
+        .min(8)
+        .is()
+        .max(100)
+        .has()
+        .uppercase()
+        .has()
+        .lowercase()
+        .has()
+        .digits(1)
+        .has()
+        .not()
+        .spaces()
+        .is()
+        .not()
+        .oneOf(["Passw0rd", "Password123"]);
+      if (!schema.validate(password)) {
+        return res.render("signup", {
+          error: "Mot de passe pas assez sécurisé",
+          registerState: "warning",
+          popupTitle: "Le mot de passe rentré n'est pas assez sécurisé",
+        });
+      }
+
       // Chiffrage du mot de passe
       const saltRounds = 10;
       const salt = await bcrypt.genSalt(saltRounds);
@@ -106,7 +134,9 @@ const authController = {
 
       if (!existsUser) {
         return res.render("login", {
-          error: "Aucun compte n'a été créé avec cette adresse mail",
+          error: "Aucun compte n'est associé à cette adresse mail",
+          registerState: "warning",
+          popupTitle: "Aucun compte n'est associé à cette adresse mail",
         });
       }
 
@@ -115,6 +145,8 @@ const authController = {
       if (!ok) {
         return res.render("login", {
           error: "Mot de passe erroné",
+          registerState: "error",
+          popupTitle: "Mot de passe erroné",
         });
       }
 
