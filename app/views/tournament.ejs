@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css"></link>
+    <title>Tournamental</title>
+  </head>
+  <%- include("partials/header") %>
+
+  <body class="bg-white min-h-screen flex flex-col">
+    <div class="flex items-center justify-center flex-auto my-[50px]">
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <figure><img src="<%= tournament.sport.picture %>" alt="<%= tournament.sport.name %>" /></figure>
+        <div class="card-body flex flex-col gap-5">
+          <div>
+            <h2 class="card-title mb-2 font-bold"><%= tournament.name %></h2>
+            <div class="badge badge-secondary"><%= tournament.sport.name %></div>
+          </div>
+          <p><%= tournament.sport.description %></p>
+
+          <!-- Below if there is only 2 clubs -->
+          <% if (tournament.club.length <= 2) { %>
+            <div class="flex w-full">
+              <% tournament.club.forEach(function(club, index) { %>
+                <div class="grid h-12 flex-grow card bg-base-300 rounded-box place-items-center">
+                  <%= club.name %>
+                </div>
+                <% if (index < tournament.club.length - 1) { %>
+                  <div class="divider divider-horizontal">VS</div>
+                <% } %>
+              <% }); %>
+            </div>
+          <% } else { %>
+
+          <!-- Below if there more than 3 clubs -->
+          <div class="flex flex-col w-full justify-center">
+              <h3 class="mb-2 font-bold">Liste des clubs participants :</h3>
+              <div class="overflow-x-auto">
+                <table class="table">
+                  <!-- head -->
+                  <thead>
+                    <tr>
+                      <th>Club</th>
+                      <th>Country</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% tournament.club.forEach(club => { %>
+                    <tr>
+                      <td><%= club.name %></td>
+                      <td><%= club.country %></td>
+                    </tr>
+                  <% }); %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          <% } %>
+          <div>
+            <h3 class="mb-2 font-bold">Événement sponsorisé par :</h3>
+            <p>
+              <% let uniqueSponsors = new Set(); %>
+              <% tournament.club.forEach((club, clubIndex) => { %>
+                <% club.sponsor.forEach((sponsor, sponsorIndex) => { %>
+                  <% if (!uniqueSponsors.has(sponsor.name)) { %>
+                    <%= sponsor.name %> 
+                    <% uniqueSponsors.add(sponsor.name); %>
+                    <% if (clubIndex < tournament.club.length - 1 || sponsorIndex < club.sponsor.length - 1) { %>
+                      <tr>
+                        <td colspan="2">,</td>
+                      </tr>
+                    <% } %>
+                  <% } %>
+                  
+                <% }) %>
+              <% }) %>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

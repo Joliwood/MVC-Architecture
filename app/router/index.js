@@ -5,6 +5,7 @@ const sportController = require("../controllers/sportController");
 const clubController = require("../controllers/clubController");
 const sponsorController = require("../controllers/sponsorController.js");
 const authController = require("../controllers/authController");
+const tournamentController = require("../controllers/tournamentController");
 
 router.get("/", appController.index);
 
@@ -19,6 +20,8 @@ router.post("/signup", authController.createUser);
 
 router.get("/login", authController.login);
 router.post("/login", authController.createSession);
+
+router.get("/tournament/:id", tournamentController.index);
 
 router.get("/logout", authController.destroy);
 
