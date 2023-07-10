@@ -1,0 +1,39 @@
+{
+  "width": 553,
+  "height": 312,
+  "cx": [
+    [ "Tournament", 68 ],
+    [ "posseder", 195 ],
+    [ "Sport", 303 ],
+    [ "user", 412 ],
+    [ "choisir", 303 ],
+    [ "Sponsor", 68 ],
+    [ "appartient", 195 ],
+    [ "Club", 303 ],
+    [ "avoir", 412 ],
+    [ "Level", 506 ]
+  ],
+  "cy": [
+    [ "Tournament", 68 ],
+    [ "posseder", 68 ],
+    [ "Sport", 68 ],
+    [ "user", 68 ],
+    [ "choisir", 169 ],
+    [ "Sponsor", 261 ],
+    [ "appartient", 261 ],
+    [ "Club", 261 ],
+    [ "avoir", 261 ],
+    [ "Level", 261 ]
+  ],
+  "shift": [
+    [ "posseder,Sport,0", 0 ],
+    [ "posseder,Tournament,0", 0 ],
+    [ "choisir,Tournament,0", 0 ],
+    [ "choisir,Club,0", 0 ],
+    [ "appartient,Sponsor,0", 0 ],
+    [ "appartient,Club,0", 0 ],
+    [ "avoir,Club,0", 0 ],
+    [ "avoir,Level,0", 0 ]
+  ],
+  "ratio": []
+}

@@ -1,8 +1,9 @@
 # Conception Merise : MCD
 
-Tournament: code_tournament, name, description
+Tournament: code_tournament, name, description, event date
 posseder, 0N Sport, 11 Tournament
-Sport: code_sport, name, description, picture
+Sport: code_sport, name, description, picture url
+user: code_user, email, password, firstname, lastname
 
 choisir, NN Tournament, 0N Club
 
