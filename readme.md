@@ -8,6 +8,14 @@
 
 <p align="center">La méthodologie Merise a été appliquée, un MCD, MLD et SVG sont visibles dans un dossier "docs"</p>
 
+## <p align="center">How to read commits in this project
+
+<p align="center">:zap: = Minor correction / debug
+<p align="center">:construction: = Work in progress
+<p align="center">:hammer: = New functionnality / component
+<p align="center">:memo: = Readme / Code comments / Documentations
+<p align="center">:sparkles: = Clean code
+
 ---
 
-<p align="center"><a href="https://mvc-architecture.onrender.com/" target="blank">Lien du site<a/></p>
+<p align="center"><a href="https://mvc-architecture.onrender.com/" target="blank">Lien du site</a></p>
