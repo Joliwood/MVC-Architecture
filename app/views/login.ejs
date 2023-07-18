@@ -13,23 +13,29 @@
     
     <h1>Se connecter</h1>
 
-    <form action="/login" method="POST" class="space-y-4">
-      <div>
-          <label class="label">
-              <span class="text-base label-text">Email</span>
-          </label>
-          <input type="email" placeholder="email@domain.com" class="w-full input input-bordered"  name="email"/>
-      </div>
-      <div>
-          <label class="label">
-              <span class="text-base label-text">Mot de passe</span>
-          </label>
-          <input type="password" placeholder="*********"
-              class="w-full input input-bordered" name="password" />
-      </div>
-      <div>
-          <button class="btn bg-green-700 btn-block text-primary-content" type="submit">Se connecter</button>
-      </div>
+    <form action="/login" method="POST" class="space-y-4 relative">
+        <div>
+            <label class="label">
+                <span class="text-base label-text">Email</span>
+            </label>
+            <input type="email" placeholder="email@domain.com" class="w-full input input-bordered"  name="email"/>
+        </div>
+        <div>
+            <label class="label">
+                <span class="text-base label-text">Mot de passe</span>
+            </label>
+            <input type="password" placeholder="*********"
+                class="w-full input input-bordered" name="password" />
+        </div>
+        <div>
+            <button class="btn bg-green-700 btn-block text-primary-content" type="submit">Se connecter</button>
+        </div>
+        <div>
+            <a href="/signup" class="bg-gray-800 px-3 py-1 rounded">S'inscrire</a>
+        </div>
+        <div>
+            <a href="/" class="bg-gray-800 px-3 py-1 rounded">Retourner à l'accueil</a>
+        </div>
   </form>
   
     

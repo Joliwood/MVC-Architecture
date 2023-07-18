@@ -6,7 +6,7 @@ Sport (id INTEGER, name TEXT, description TEXT, picture TEXT)
 
 Sponsor (id INTEGER, name TEXT, slogan TEXT)
 
-Club (id INTEGER, name TEXT, country INTEGER, level_id(id))
+Club (id INTEGER, name TEXT, country INTEGER, #level_id(id))
 
 Level (id INTEGER, name TEXT)
 
